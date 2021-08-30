@@ -48,7 +48,7 @@ class ImageListActivity : AppCompatActivity() {
     fun searchOnclick(view: View) {
         hideKeyboard(view)
         val editTextHello = searchBox.text.toString()
-        imagesViewModel.fetchImages(editTextHello)
+        imagesViewModel.fetchImages3(editTextHello)
     }
 
     private fun hideKeyboard(view: View) {

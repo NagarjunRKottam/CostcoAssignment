@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit
 private const val BASE_URL = "https://api.flickr.com/services/rest/"
 private const val CONNECTION_TIMEOUT_MS: Long = 10
 
-object WebClient {
+object RetrofitInstance {
     val client: FlickrApiInterface by lazy {
         Retrofit.Builder().baseUrl(BASE_URL)
             .addConverterFactory(

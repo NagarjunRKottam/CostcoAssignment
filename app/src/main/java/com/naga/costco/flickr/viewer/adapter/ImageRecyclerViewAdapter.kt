@@ -30,7 +30,8 @@ class ImageRecyclerViewAdapter(val photos: MutableList<Photo> = mutableListOf())
         holder.bind(photos[position])
     }
 
-    class PhotosViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+    class PhotosViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        View.OnClickListener {
 
         private var photo: Photo? = null
 

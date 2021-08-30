@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitBuilder {
     private static final String TAG = RetrofitBuilder.class.getSimpleName();
     private static RetrofitBuilder instance = null;
-    private ApiInterface apiInterface = null;
+    private ApiInterface apiInterface;
     private Context context;
 
     public void init(Context context) {
