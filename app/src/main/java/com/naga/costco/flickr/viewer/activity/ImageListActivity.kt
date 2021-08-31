@@ -1,20 +1,18 @@
 package com.naga.costco.flickr.viewer.activity
 
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.viewModels
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-
+import androidx.recyclerview.widget.GridLayoutManager
 import com.naga.costco.flickr.viewer.R
 import com.naga.costco.flickr.viewer.adapter.ImageRecyclerViewAdapter
 import com.naga.costco.flickr.viewer.viewmodel.ImageListViewModel
 import kotlinx.android.synthetic.main.activity_image_list.*
-import java.lang.Exception
 
 class ImageListActivity : AppCompatActivity() {
 
@@ -25,11 +23,12 @@ class ImageListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_image_list)
+        displayImages()
 
+    }
+
+    private fun displayImages() {
         try {
-            photosRecyclerView.adapter = imagesAdapter
-            photosRecyclerView.layoutManager = GridLayoutManager(this, 3)
-
             photosRecyclerView.adapter = imagesAdapter
             photosRecyclerView.layoutManager = GridLayoutManager(this, 3)
             imagesViewModel.photosLiveData.observe(this,
