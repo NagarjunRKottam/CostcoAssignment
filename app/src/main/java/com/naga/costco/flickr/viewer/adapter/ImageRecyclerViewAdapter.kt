@@ -1,12 +1,13 @@
 package com.naga.costco.flickr.viewer.adapter
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.os.bundleOf
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.naga.costco.flickr.viewer.R
-import com.naga.costco.flickr.viewer.activity.ImageDetailsActivity
 import com.naga.costco.flickr.viewer.data.Photo
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.layout_image_list.view.*
@@ -14,6 +15,7 @@ import kotlinx.android.synthetic.main.layout_image_list.view.*
 
 class ImageRecyclerViewAdapter(val photos: MutableList<Photo> = mutableListOf()) :
     RecyclerView.Adapter<ImageRecyclerViewAdapter.PhotosViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotosViewHolder {
         return PhotosViewHolder(
             LayoutInflater.from(parent.context).inflate(
@@ -49,15 +51,24 @@ class ImageRecyclerViewAdapter(val photos: MutableList<Photo> = mutableListOf())
         }
 
         override fun onClick(v: View) {
-            val context = itemView.context
-            val showPhotoIntent = Intent(context, ImageDetailsActivity::class.java)
-            showPhotoIntent.putExtra(PHOTO_KEY, photo)
-            context.startActivity(showPhotoIntent)
+            val navController = Navigation.findNavController(v)
+            if (photo != null) {
+                val bundle = bundleOf(
+                    IMAGES to photo,
+                )
+                navController.navigate(
+                    R.id.action_imageListFragment_to_imageDetailsFragment,
+                    bundle
+                )
+            } else {
+                Toast.makeText(itemView.context, IMAGE_LIST_EMPTY, Toast.LENGTH_SHORT).show()
+            }
         }
 
         companion object {
-            private val PHOTO_KEY = "PHOTO"
+            const val IMAGES = "images"
             const val IMAGE_SIDE_PX = 400
+            const val IMAGE_LIST_EMPTY = "Image list is empty"
         }
     }
 }

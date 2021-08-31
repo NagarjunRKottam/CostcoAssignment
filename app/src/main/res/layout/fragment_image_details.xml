@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".activity.ImageDetailsActivity">
+    tools:context=".fragment.ImageDetailsFragment">
 
     <LinearLayout
         android:id="@+id/toolbar_layout"
@@ -12,22 +12,24 @@
         android:layout_height="50dp"
         android:background="@color/colorBgGreen"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/back_button"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_margin="5dp"
-            android:background="@drawable/back"
-            android:onClick="onBlackClick" />
+            android:background="@drawable/back" />
 
         <TextView
-            android:id="@+id/textview_name"
+            android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:gravity="left|center"
-            android:onClick="onBlackClick"
             android:text="@string/image_details"
             android:textColor="#ffffff"
             android:textSize="28sp" />
@@ -38,15 +40,21 @@
         android:id="@+id/photoImageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
-        android:layout_margin="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_layout"
         tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/photoDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp" />
+        android:layout_margin="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/photoImageView" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
